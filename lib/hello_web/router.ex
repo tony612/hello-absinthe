@@ -13,6 +13,17 @@ defmodule HelloWeb.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/api" do
+    pipe_through :api
+
+    forward "/graphiql", Absinthe.Plug.GraphiQL,
+      schema: HelloWeb.Schema
+
+    forward "/", Absinthe.Plug,
+      schema: HelloWeb.Schema
+
+  end
+
   scope "/", HelloWeb do
     pipe_through :browser
 

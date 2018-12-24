@@ -7,6 +7,8 @@ defmodule Hello.Accounts.User do
     field :email, :string
     field :name, :string
 
+    has_many :posts, Hello.Content.Post, foreign_key: :author_id
+
     timestamps()
   end
 

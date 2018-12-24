@@ -17,4 +17,10 @@ defmodule Hello.Content do
   def list_posts() do
     Repo.all(Content.Post)
   end
+
+  def create_post(user, attrs) do
+    user
+    |> Ecto.build_assoc(:posts, attrs)
+    |> Repo.insert()
+  end
 end

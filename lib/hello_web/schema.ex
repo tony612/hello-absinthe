@@ -22,4 +22,17 @@ defmodule HelloWeb.Schema do
 
   end
 
+  mutation do
+
+    @desc "Create a post"
+    field :create_post, type: :post do
+      arg :title, non_null(:string)
+      arg :body, non_null(:string)
+      arg :published_at, :naive_datetime
+
+      resolve &Resolvers.Content.create_post/3
+    end
+
+  end
+
 end
